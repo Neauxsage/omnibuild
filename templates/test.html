@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handyman Website Features</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e; 
+    color: #e0e0e0; 
+}
+    #totalCost {
+        position: fixed; 
+        bottom: 20px; 
+        right: 20px; 
+        background: linear-gradient(to right, #4CAF50, #81C784);
+        padding: 15px; /* Increased padding */
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        color: black;
+        z-index: 1000;
+        font-size: 20px; /* Increased font size */
+        font-weight: bold; /* Make text bold */
+    }
+
+.card {
+    background-color: #3d3d3d; 
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    z-index: 1;
+
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    border-radius: 10px; /* Rounded corners for table */
+}
+
+th, td {
+    border: 1px solid #3a3a3a;
+    padding: 8px;
+    text-align: center;
+    color: #f2f2f2; 
+}
+
+/* Column 1: Left-aligned */
+th:nth-child(1), td:nth-child(1) {
+    text-align: left;
+}
+
+/* Column 2: Centered and narrow */
+th:nth-child(2), td:nth-child(2) {
+    text-align: center;
+    width: 100px;
+    white-space: normal; 
+}
+
+/* Column 3: Left-aligned */
+th:nth-child(3), td:nth-child(3) {
+    text-align: left;
+}
+
+/* Column 4: Centered */
+th:nth-child(4), td:nth-child(4) {
+    text-align: center;
+}
+
+
+th {
+    background-color: #262626; 
+}
+
+.feature-row:hover, .timeline-option:hover {
+    background-color: #404040; 
+    cursor: pointer;
+}
+
+.selected, .selected-timeline {
+    background-color: #404040; 
+}
+
+/* Timeline Selection Styles */
+#timelineSelection {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.timeline-option {
+    background-color: #1e1e1e;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 35px; /* Rounded corners for table */
+
+}
+
+.timeline-option:hover {
+    background-color: #4CAF50;
+        color: black; /* Set text color to black when selected */
+
+}
+
+.selected-timeline {
+    background-color: #4CAF50; 
+        color: black; /* Set text color to black when selected */
+
+}
+
+#additionalInfo {
+    margin-top: 20px;
+}
+
+#additionalRequests {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #1e1e1e; 
+    color: #e0e0e0; 
+    border: 1px solid #3a3a3a; 
+    border-radius: 20px; /* Rounded corners for table */
+
+}
+
+#submitInfo {
+    padding: 10px 20px;
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 35px; /* Rounded corners for table */
+
+}
+
+#submitInfo:hover {
+    background-color: #45a049; 
+}
+
+#websiteLinks li {
+    background-color: #1e1e1e; 
+    width: 95%;
+
+}
+
+#websiteLinks h3 {
+    margin-bottom: 10px;
+}
+
+.link-input {
+    margin-bottom: 10px;
+}
+
+.link-input input[type="url"] {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #3a3a3a; 
+    border-radius: 4px;
+    box-sizing: border-box; 
+    background-color: #1e1e1e; 
+    color: #e0e0e0; 
+    border-radius: 35px; /* Rounded corners for table */
+
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.card1 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 30%; /* Adjust the width as needed */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius: 35px;
+    margin: 5px 0;
+    transition: all 0.3s ease; /* Animation effect */
+    background-color: #1e1e1e; 
+
+
+}
+
+.card1:hover {
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4); /* More pronounced shadow on hover */
+}
+
+.card1 h3 {
+    text-align: center;
+}
+
+.card1 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card1 li {
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 35px; /* Rounded corners for table */
+
+}
+
+.card1 li.selected {
+    background-color: #4CAF50;
+    color: black; 
+
+}
+
+.price {
+    float: right; 
+    color: #black;
+    margin-left: 10px; 
+}
+
+
+
+
+
+#basicPackage {
+    background-color: #black; /* Light blue background */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Soft shadow */
+}
+
+#basicPackage ul li:before {
+    content: "\1F331"; /* Example icon (document) */
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#basicPackage:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25); /* Deeper shadow on hover */
+}
+
+
+#standardPackage h3 {
+    font-weight: bold;
+    color: #66bb6a; 
+
+
+}
+
+#standardPackage {
+    background-color: #black; /* Light blue background */
+
+}
+
+#standardPackage ul li {
+    position: relative;
+    padding-left: 30px;
+}
+
+#standardPackage ul li:before {
+    content: "\2B50"; /* Example badge icon (trophy) */
+    position: absolute;
+    left: 0;
+}
+
+#standardPackage:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25); /* Deeper shadow on hover */
+}
+
+#premiumPackage {
+    background-color: #black; /* Dark background */
+    color: #fff; /* Light text */
+}
+
+#premiumPackage h3 {
+    font-family: 'Times New Roman', serif; /* Elegant font */
+    font-size: 1.2em;
+    color: #d4af37; /* Gold color for the header */
+
+}
+
+#premiumPackage ul li {
+    position: relative;
+    padding-left: 30px;
+    border-bottom: 1px dotted #bdbdbd; /* Dotted lines for separation */
+}
+
+#premiumPackage ul li:before {
+    content: "\1F3C6"; /* Crown icon */
+    position: absolute;
+    left: 0;
+    color: gold; /* Gold color for the crown */
+}
+
+#premiumPackage ul li:hover {
+    background-color: #616161; /* Hover effect */
+}
+
+
+
+.info-icon {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+    color: #4CAF50; /* Adjust the color as needed */
+}
+
+
+
+.instructions-card {
+    background-color: #3d3d3d; /* Card background color */
+    border-radius: 15px; /* Rounded corners for the card */
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5); /* Shadow for depth */
+    color: #e0e0e0; /* Text color */
+        width: auto;
+
+}
+
+.instructions-card h2 {
+    margin-top: 0;
+    color: #white; /* Header text color */
+    text-align: center;
+
+}
+
+.instructions-card p {
+    font-size: 1em;
+    line-height: 1.5; /* Spacing between lines */
+	
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+
+        #totalCost {
+            position: fixed;
+            bottom: 10px; 
+            right: 10px; 
+            padding: 10px;
+            font-size: 18px; /* Adjusted font size for smaller screens */
+        }
+
+    .card {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    table, th, td {
+        width: auto;
+        padding: 4px;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .card1 {
+        width: auto;
+        margin: 10px 0;
+    }
+
+    #websiteLinks h3, #additionalInfo h3 {
+        font-size: 1em;
+    }
+
+    .link-input input[type="url"], #additionalRequests {
+        padding: 5px;
+    }
+
+    #submitInfo {
+        padding: 5px 10px;
+    }
+    .instructions-card {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .instructions-card h2 {
+        font-size: 1.2em;
+    }
+
+    .instructions-card p {
+        font-size: 0.9em;
+    }
+}
+
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let totalCost = 0;
+    let timelineAdjustment = 0;
+
+    // Feature row selection and cost calculation
+    document.querySelectorAll('.feature-row').forEach(row => {
+        row.addEventListener('click', function() {
+            const price = parseInt(this.dataset.price);
+            toggleCost(this, price);
+        });
+    });
+
+    // Timeline selection and adjustment
+    const timelineOptions = document.querySelectorAll('.timeline-option');
+    timelineOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.timeline-option').forEach(opt => opt.classList.remove('selected-timeline'));
+            this.classList.add('selected-timeline');
+            timelineAdjustment = parseInt(this.dataset.adjustment);
+            updateTotalCost();
+        });
+    });
+
+    // Package item selection and cost calculation
+    document.querySelectorAll('.card1 ul li').forEach(item => {
+        item.addEventListener('click', function() {
+            const price = parseInt(this.dataset.price);
+            toggleCost(this, price);
+        });
+    });
+
+    // Select or deselect all items in a package
+    document.querySelectorAll('.card1').forEach(card => {
+        card.addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                return;
+            }
+
+            let items = Array.from(this.querySelectorAll('li'));
+            let allSelected = items.every(li => li.classList.contains('selected'));
+            let priceChange = 0;
+
+            items.forEach(li => {
+                let itemPrice = parseInt(li.dataset.price);
+                if (allSelected) {
+                    if (li.classList.contains('selected')) {
+                        li.classList.remove('selected');
+                        priceChange -= itemPrice;
+                    }
+                } else {
+                    if (!li.classList.contains('selected')) {
+                        li.classList.add('selected');
+                        priceChange += itemPrice;
+                    }
+                }
+            });
+
+            totalCost += priceChange;
+            updateTotalCost();
+        });
+    });
+
+    function toggleCost(element, price) {
+        if (element.classList.contains('selected')) {
+            totalCost -= price;
+            element.classList.remove('selected');
+        } else {
+            totalCost += price;
+            element.classList.add('selected');
+        }
+        updateTotalCost();
+    }
+
+    function updateTotalCost() {
+        let adjustedCost = totalCost;
+        if (timelineAdjustment >= 0) {
+            adjustedCost += timelineAdjustment;
+        } else {
+            adjustedCost -= Math.abs(totalCost * timelineAdjustment / 100);
+        }
+        document.getElementById('totalCost').innerText = 'Estimated Total Cost: $' + adjustedCost;
+    }
+	
+	
+document.getElementById('submitInfo').addEventListener('click', function() {
+    let packages = [];
+    document.querySelectorAll('.card1 ul li.selected').forEach(item => {
+        let name = item.textContent.split('$')[0].trim();
+        let price = item.dataset.price;
+        packages.push({ name, price });
+    });
+
+    let timeline = document.querySelector('.timeline-option.selected-timeline');
+    let timelineOption = timeline ? timeline.textContent.trim() : '';
+
+    let websiteLinks = [];
+    document.querySelectorAll('.link-input input[type="url"]').forEach(input => {
+        if(input.value) websiteLinks.push(input.value);
+    });
+
+		
+    let additionalInfo = document.getElementById('additionalRequests').value;
+
+    let totalCostElement = document.getElementById('totalCost');
+    let totalCost = totalCostElement ? totalCostElement.innerText.split('$')[1].trim() : '0';
+
+    let formData = {
+        'packages': packages,
+        'timeline': timelineOption,
+        'websiteLinks': websiteLinks,
+        'additionalInfo': additionalInfo,
+        'totalCost': totalCost
+    };
+
+    fetch('/submit-form', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        alert('Form submitted successfully!');
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the form.');
+    });
+});
+});
+</script>
+
+<body>
+<header>
+    <div class="instructions-card">
+        <h2>How to Use This Form</h2>
+        <ul>
+            <li>Click on a package to select it or create a custom package</li>
+            <li>Determine how soon you want your new Website.</li>
+            <li>If know of any websites you like and want used as inspiration add them to the links section.</li>
+            <li>Feel free to upload images or documents with any additional info or inspiration.</li>
+            <li>Provide any additional information as necessary.</li>
+            <li>Click 'Submit' to send your request.</li>
+        </ul>
+    </div>
+</header>
+
+		<div class="card">  
+<div class="card-container">
+    <!-- Basic Package -->
+    <div class="card1" id="basicPackage">
+        <h3>Basic Package</h3>
+        <ul>
+            <li data-price="140">Home Page <span class="price">$140</span></li>
+            <li data-price="140">About Us Page <span class="price">$140</span></li>
+            <li data-price="220">Contact Form <span class="price">$220</span></li>
+            <li data-price="200">Social Media Integration <span class="price">$200</span></li>
+            <li data-price="140">Analytics Integration <span class="price">$140</span></li>
+        </ul>
+        <p>Estimated Total Package Price: $840</p>
+    </div>
+
+    <!-- Standard Package -->
+    <div class="card1" id="standardPackage">
+        <h3>Standard Package</h3>
+        <ul>
+            <li data-price="840">All Basic Features <span class="price">$840</span></li>
+            <li data-price="260">Services Page <span class="price">$260</span></li>
+            <li data-price="260">Portfolio/Gallery <span class="price">$260</span></li>
+            <li data-price="260">Testimonials/Reviews <span class="price">$260</span></li>
+            <li data-price="160">FAQ Section <span class="price">$160</span></li>
+            <li data-price="360">SEO Optimization <span class="price">$360</span></li>
+            <li data-price="440">Responsive Design <span class="price">$440</span></li>
+            <li data-price="160">Email Newsletter Signup <span class="price">$160</span></li>
+        </ul>
+        <p>Estimated Total Package Price: $2,740</p>
+    </div>
+
+    <!-- Premium Package -->
+    <div class="card1" id="premiumPackage">
+        <h3>Premium Package</h3>
+        <ul>
+            <li data-price="2540">All Standard Features <span class="price">$2,540</span></li>
+            <li data-price="520">Blog Section <span class="price">$520</span></li>
+            <li data-price="680">Online Booking System <span class="price">$680</span></li>
+            <li data-price="520">Payment Gateway Integration <span class="price">$520</span></li>
+            <li data-price="320">User Registration/Login <span class="price">$320</span></li>
+            <li data-price="360">AI Chat Support <span class="price">$360</span></li>
+        </ul>
+        <p>Estimated Total Package Price: $4,940</p>
+    </div>
+</div>
+
+    <h4>**All packaged include: Domain name, SSL Security Certificate for 1 year.  </h4>
+    <h4>**Does not include monthly server costs.  </h4>
+
+</div>
+
+ 
+
+
+
+    <div id="totalCost">Estimated Total Cost: $0</div>
+
+
+
+
+
+
+
+
+		<div class="card">   
+				<div id="timelineSelection">
+				<h3>Select the timeline for your website:</h3>
+				<div class="timeline-option" data-adjustment="200">
+					<span>Expedited (additional $200)</span>
+				</div>
+				<div class="timeline-option" data-adjustment="0">
+					<span>2 months</span>
+				</div>
+				<div class="timeline-option" data-adjustment="0">
+					<span>4 months</span>
+				</div>
+				<div class="timeline-option" data-adjustment="-5">
+					<span>9 months (5% discount offered)</span>
+				</div>
+			</div>
+		</div>    
+			
+			
+		<div class="card">
+		<div id="websiteLinks">
+			<h3>Enter Links to Websites You Like. Provide an details about what you like about the listed websites in the next section:</h3>
+			<div class="link-input">
+				<input type="url" id="websiteLink1" placeholder="Enter website link 1">
+			</div>
+			<div class="link-input">
+				<input type="url" id="websiteLink2" placeholder="Enter website link 2">
+			</div>
+			<div class="link-input">
+				<input type="url" id="websiteLink3" placeholder="Enter website link 3">
+			</div>
+
+		</div>
+	</div>  
+
+		 
+		  
+		<div class="card">
+			<div id="fileUploadSection">
+				<h3>Upload Images or Files - .jpg, .png, .pdf, .doc, .docx:</h3>
+				<input type="file" id="fileUpload" multiple accept="image/*, .pdf, .doc, .docx">
+				<button id="uploadButton">Upload</button>
+			</div>
+	</div>
+
+   
+<div class="card">
+    <div id="additionalInfo">
+        <h3>Any additional information or requests:</h3>
+        <textarea id="additionalRequests" rows="4" cols="50" placeholder="Enter any additional details here..."></textarea>
+        <button id="submitInfo">Submit</button>
+    </div>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
