@@ -48,9 +48,9 @@ def submit_form():
     """
 
     # Email setup (Replace with your details)
-    sender_email = "hanfordjobnotifier@gmail.com"
-    receiver_email = "bhamm121@gmail.com"
-    password = "lkbfpqqbstxhtgan"
+    sender_email = "test1@gmail.com"
+    receiver_email = "test@gmail.com"
+    password = "asdfasdfasdfasdf"
 
     # Create and send email
     message = MIMEMultipart()
